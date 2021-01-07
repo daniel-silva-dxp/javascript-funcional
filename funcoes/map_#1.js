@@ -33,9 +33,7 @@ console.log(carrinho.map(setTotal));
 
 const myMap = (arr, fn) => {
   const a = [];
-  for (let i = 0; i < arr.length; i++) {
-    a.push(fn(arr[i], i, arr));
-  }
+  arr.forEach((el, i, array) => a.push(fn(el, i, array)));
   return a;
 };
 
