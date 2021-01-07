@@ -25,3 +25,17 @@ console.log(estoqueZerado);
 
 const estoqueBaixo = myFilter(carrinho, (item) => item.qtde <= 5);
 console.log(estoqueBaixo);
+
+// Implementando uma função recursiva que simula o filter
+
+const myRecursiveFilter = (arr = [], fn = (item) => item) => {
+  return (function fnInternal(a, counter) {
+    const [head, ...tail] = a;
+    return a.length === 0
+      ? []
+      : (fn(head, counter, a) ? [head] : []).concat(
+          fnInternal(tail, counter + 1)
+        );
+  })(arr, 0);
+};
+console.log("r", myRecursiveFilter(carrinho, estoqueMenorQueZero));
