@@ -40,3 +40,16 @@ const myMap = (arr, fn) => {
 const result = myMap(carrinho, getNome);
 
 console.log(`resultado: ${result}`);
+
+// Array.prototype.map() recursivo
+const mapRecursivo = (a = [], fn = (item) => item) => {
+  return (function fnInternal(arr, counter) {
+    const [head, ...tail] = arr;
+    return arr.length === 0
+      ? []
+      : [fn(head, counter, a), ...fnInternal(tail, counter + 1)];
+  })(a, 0);
+};
+
+const productNames = mapRecursivo(carrinho, getNome);
+console.log(productNames);
