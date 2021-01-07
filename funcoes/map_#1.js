@@ -28,3 +28,17 @@ const setTotal = (element) => {
   return element;
 };
 console.log(carrinho.map(setTotal));
+
+// Implementando função que simula o MAP
+
+const myMap = (arr, fn) => {
+  const a = [];
+  for (let i = 0; i < arr.length; i++) {
+    a.push(fn(arr[i], i, arr));
+  }
+  return a;
+};
+
+const result = myMap(carrinho, getNome);
+
+console.log(`resultado: ${result}`);
