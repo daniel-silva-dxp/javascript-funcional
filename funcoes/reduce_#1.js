@@ -50,3 +50,24 @@ const myReduce = (arr, fn, initial) => {
 };
 
 console.log(myReduce(numbers, sum, 0));
+
+// Implementando função recursiva que simula o Array.reduce()
+
+const myRecursiveReduce = (arr, fn, initial) => {
+  let acc = initial;
+  const newArr = arr;
+  if (initial === undefined) {
+    acc = arr[0];
+    newArr = arr.slice(1);
+  }
+  return (function fnInitial(a, counter) {
+    const [head, ...tail] = a;
+    if (a.length === 0) return [];
+
+    acc = fn(acc, head, counter, a);
+    fnInitial(tail, counter + 1);
+    return acc;
+  })(newArr, 0);
+};
+
+console.log(myRecursiveReduce(names, counterNames, {}));
