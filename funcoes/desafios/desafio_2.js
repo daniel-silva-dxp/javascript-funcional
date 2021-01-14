@@ -30,7 +30,15 @@ const qtdeEPreco = carrinho.map(getQuantidadeEPreco);
 console.log(qtdeEPreco);
 
 // Retornar média
-const getMedia = (acc, value, i, arr) => acc + value.preco / arr.length;
+const getMedia = (acc, el) => {
+  const q = acc.qtde + 1;
+  const t = acc.total + el.preco;
+  return {
+    qtde: q,
+    total: t,
+    media: t / q,
+  };
+};
 
-const media = carrinho.reduce(getMedia, 0);
+const media = carrinho.reduce(getMedia, { qtde: 0, total: 0, media: 0 });
 console.log(media);
