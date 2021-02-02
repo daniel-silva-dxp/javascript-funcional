@@ -31,8 +31,13 @@ function readFiles(dir) {
   return Promise.all(dir.map((element) => readFile(element)));
 }
 
+function removeEmptyRows(arr) {
+  return arr.filter((element) => element.trim());
+}
+
 module.exports = {
   readDirectory,
   filterReadData,
   readFiles,
+  removeEmptyRows,
 };
