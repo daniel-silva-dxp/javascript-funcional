@@ -32,7 +32,11 @@ function readFiles(dir) {
 }
 
 function removeEmptyRows(arr) {
-  return arr.filter((element) => element.trim());
+  return arr.filter((row) => row.trim());
+}
+
+function removeRowsWithTime(arr, textualPattern) {
+  return arr.filter((row) => !row.includes(textualPattern));
 }
 
 module.exports = {
@@ -40,4 +44,5 @@ module.exports = {
   filterReadData,
   readFiles,
   removeEmptyRows,
+  removeRowsWithTime,
 };
