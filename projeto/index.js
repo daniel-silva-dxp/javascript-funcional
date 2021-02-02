@@ -3,4 +3,6 @@ const fn = require("./app");
 
 const dir = path.join(__dirname, "data", "subtitle");
 
-console.log(fn.readDirectory(dir));
+fn.readDirectory(dir)
+  .then((files) => fn.filterReadData(files, ".srt"))
+  .then(console.log);
