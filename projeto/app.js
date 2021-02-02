@@ -16,7 +16,23 @@ function filterReadData(arr, extension) {
   return arr.filter((element) => element.endsWith(extension));
 }
 
+function readFile(dir) {
+  return new Promise((resolve, reject) => {
+    try {
+      const data = fs.readFileSync(dir, { encoding: "utf-8" });
+      resolve(data.toString());
+    } catch (e) {
+      reject(e);
+    }
+  });
+}
+
+function readFiles(dir) {
+  return Promise.all(dir.map((element) => readFile(element)));
+}
+
 module.exports = {
   readDirectory,
   filterReadData,
+  readFiles,
 };
