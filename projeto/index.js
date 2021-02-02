@@ -10,4 +10,5 @@ fn.readDirectory(dir)
   .then((str) => str.split("\n"))
   .then((rows) => fn.removeEmptyRows(rows))
   .then((rows) => fn.removeRowsWithTime(rows, "-->"))
+  .then((rows) => fn.removeRowsWithNumber(rows))
   .then(console.log);
