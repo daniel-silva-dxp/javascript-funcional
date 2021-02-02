@@ -8,4 +8,5 @@ fn.readDirectory(dir)
   .then((fileSrt) => fn.readFiles(fileSrt))
   .then((content) => content.join("\n"))
   .then((str) => str.split("\n"))
+  .then((rows) => fn.removeEmptyRows(rows))
   .then(console.log);
