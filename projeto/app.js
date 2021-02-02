@@ -39,10 +39,18 @@ function removeRowsWithTime(arr, textualPattern) {
   return arr.filter((row) => !row.includes(textualPattern));
 }
 
+function removeRowsWithNumber(arr) {
+  return arr.filter((element) => {
+    const num = parseInt(element.trim());
+    return num !== num;
+  });
+}
+
 module.exports = {
   readDirectory,
   filterReadData,
   readFiles,
   removeEmptyRows,
   removeRowsWithTime,
+  removeRowsWithNumber,
 };
