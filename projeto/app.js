@@ -12,8 +12,10 @@ function readDirectory(dir) {
   });
 }
 
-function filterReadData(arr, extension) {
-  return arr.filter((element) => element.endsWith(extension));
+function filterReadData(extension) {
+  return function (arr) {
+    return arr.filter((element) => element.endsWith(extension));
+  };
 }
 
 function readFile(dir) {
@@ -35,8 +37,10 @@ function removeEmptyRows(arr) {
   return arr.filter((row) => row.trim());
 }
 
-function removeRowsWithTime(arr, textualPattern) {
-  return arr.filter((row) => !row.includes(textualPattern));
+function removeRowsWithTime(textualPattern) {
+  return function (arr) {
+    return arr.filter((row) => !row.includes(textualPattern));
+  };
 }
 
 function removeRowsWithNumber(arr) {
