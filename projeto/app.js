@@ -50,6 +50,18 @@ function removeRowsWithNumber(arr) {
   });
 }
 
+function removeChar(char) {
+  return function (arr) {
+    return arr.map((element) => {
+      let txt = element;
+      char.forEach((simbol) => {
+        txt = txt.split(simbol).join("");
+      });
+      return txt;
+    });
+  };
+}
+
 module.exports = {
   readDirectory,
   filterReadData,
@@ -57,4 +69,5 @@ module.exports = {
   removeEmptyRows,
   removeRowsWithTime,
   removeRowsWithNumber,
+  removeChar,
 };
