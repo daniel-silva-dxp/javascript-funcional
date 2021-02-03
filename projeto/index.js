@@ -22,12 +22,15 @@ const simbols = [
 ];
 
 fn.readDirectory(dir)
-  .then((files) => fn.filterReadData(".srt")(files))
+  .then(fn.filterReadData(".srt"))
   .then(fn.readFiles)
-  .then((content) => content.join("\n"))
-  .then((str) => str.split("\n"))
+  .then(fn.mergeContent)
+  .then(fn.separateTextBy("\n"))
   .then(fn.removeEmptyRows)
-  .then((rows) => fn.removeRowsWithTime("-->")(rows))
+  .then(fn.removeRowsWithTime("-->"))
   .then(fn.removeRowsWithNumber)
-  .then((text) => fn.removeChar(simbols)(text))
+  .then(fn.removeChar(simbols))
+  .then(fn.mergeContent)
+  .then(fn.separateTextBy(" "))
+  .then(fn.removeEmptyRows)
   .then(console.log);
