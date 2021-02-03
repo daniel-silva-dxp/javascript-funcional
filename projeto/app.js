@@ -33,6 +33,16 @@ function readFiles(dir) {
   return Promise.all(dir.map((element) => readFile(element)));
 }
 
+function mergeContent(arr) {
+  return arr.join(" ");
+}
+
+function separateTextBy(char) {
+  return function (txt) {
+    return txt.split(char);
+  };
+}
+
 function removeEmptyRows(arr) {
   return arr.filter((row) => row.trim());
 }
@@ -66,6 +76,8 @@ module.exports = {
   readDirectory,
   filterReadData,
   readFiles,
+  mergeContent,
+  separateTextBy,
   removeEmptyRows,
   removeRowsWithTime,
   removeRowsWithNumber,
