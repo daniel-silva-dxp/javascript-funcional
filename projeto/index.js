@@ -33,4 +33,6 @@ fn.readDirectory(dir)
   .then(fn.mergeContent)
   .then(fn.separateTextBy(" "))
   .then(fn.removeEmptyRows)
+  .then(fn.removeRowsWithNumber)
+  .then(fn.groupWords)
   .then(console.log);

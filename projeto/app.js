@@ -72,6 +72,17 @@ function removeChar(char) {
   };
 }
 
+function groupWords(words) {
+  return Object.values(
+    words.reduce((acc, word) => {
+      const txt = word.toLowerCase();
+      const quantity = acc[txt] ? acc[txt].quantity + 1 : 1;
+      acc[txt] = { element: txt, quantity };
+      return acc;
+    }, {})
+  );
+}
+
 module.exports = {
   readDirectory,
   filterReadData,
@@ -82,4 +93,5 @@ module.exports = {
   removeRowsWithTime,
   removeRowsWithNumber,
   removeChar,
+  groupWords,
 };
