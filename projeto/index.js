@@ -35,4 +35,6 @@ fn.readDirectory(dir)
   .then(fn.removeEmptyRows)
   .then(fn.removeRowsWithNumber)
   .then(fn.groupWords)
+  .then(fn.sortByNumericAttributeDesc("quantity"))
+  .then(fn.saveFile(dir))
   .then(console.log);
