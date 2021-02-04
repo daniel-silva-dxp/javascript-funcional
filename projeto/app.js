@@ -4,7 +4,7 @@ const path = require("path");
 function readDirectory(dir) {
   return new Promise((resolve, reject) => {
     try {
-      let files = fs.readdirSync(dir);
+      const files = fs.readdirSync(dir);
       resolve(files.map((file) => path.join(dir, file)));
     } catch (e) {
       reject(e);
@@ -63,11 +63,9 @@ function removeRowsWithNumber(arr) {
 function removeChar(char) {
   return function (arr) {
     return arr.map((element) => {
-      let txt = element;
-      char.forEach((simbol) => {
-        txt = txt.split(simbol).join("");
-      });
-      return txt;
+      return char.reduce((acc, simbol) => {
+        return acc.split(simbol).join("");
+      }, element);
     });
   };
 }
