@@ -83,6 +83,27 @@ function groupWords(words) {
   );
 }
 
+function sortByNumericAttributeDesc(attr) {
+  return function (arr) {
+    return arr.sort((x, y) => y[attr] - x[attr]);
+  };
+}
+
+function saveFile(dir) {
+  return function (arr) {
+    return new Promise((resolve, reject) => {
+      try {
+        fs.appendFile(`${dir}/data_count.json`, JSON.stringify(arr), (err) => {
+          if (err) throw err;
+          console.log("Arquivo Salvo!");
+        });
+      } catch (e) {
+        reject(e);
+      }
+    });
+  };
+}
+
 module.exports = {
   readDirectory,
   filterReadData,
@@ -94,4 +115,6 @@ module.exports = {
   removeRowsWithNumber,
   removeChar,
   groupWords,
+  sortByNumericAttributeDesc,
+  saveFile,
 };
